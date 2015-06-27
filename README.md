@@ -18,3 +18,14 @@
 
 When deploying this app first time, run `cf push` with option `-c "bundle exec rake db:migrate"`.
 (First time deploying app after table has been created, run command with option `-c "null"`.)
+
+
+# Using multiple data sources
+
+Create following environment variables
+
+* CLOUD_DATABASE_HOST
+* CLOUD_DATABASE_PORT
+* CLOUD_DATABASE_NAME
+* CLOUD_DATABASE_USER
+* CLOUD_DATABASE_PASS
