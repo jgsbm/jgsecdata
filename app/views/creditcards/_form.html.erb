@@ -1,0 +1,32 @@
+<%= form_for(@creditcard) do |f| %>
+  <% if @creditcard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@creditcard.errors.count, "error") %> prohibited this creditcard from being saved:</h2>
+
+      <ul>
+      <% @creditcard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :creditno %><br>
+      <%= f.text_field :creditno, :class => 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :customer_id %><br>
+      <%= f.collection_select :customer_id, Customer.all, :id, :customer_name, :required => true, :class => 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :version %><br>
+      <%= f.number_field :version, :class => 'form-control' %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary form-control' %>
+    </div>
+  </div>
+<% end %>

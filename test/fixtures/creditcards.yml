@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creditno: MyString
+  customer_id: 
+  version: 1
+
+two:
+  creditno: MyString
+  customer_id: 
+  version: 1

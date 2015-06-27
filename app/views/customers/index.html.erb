@@ -1,0 +1,41 @@
+<h1>顧客情報</h1>
+
+<div align="right">
+  <%= link_to '新規顧客情報作成', new_customer_path, :class => 'btn btn-primary' %>
+</div>
+
+<br>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>住所</th>
+      <th>電話番号</th>
+      <th>パスワード</th>
+      <th>メールアドレス</th>
+      <th>作成日時</th>
+      <th>更新日時</th>
+      <th>バージョン</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.customer_name %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.tel %></td>
+        <td><%= customer.hashed_password %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.created_at %></td>
+        <td><%= customer.updated_at %></td>
+        <td><%= customer.version %></td>
+        <td>
+          <%= link_to '編集', edit_customer_path(customer), :class => 'btn btn-warning' %>
+          <%= link_to '削除', customer, method: :delete, data: { confirm: '削除していいですか？' }, :class => 'btn btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @product_image.product %>
+</p>
+
+<p>
+  <strong>Pic:</strong>
+  <%= image_tag pic_product_image_path(@product_image) %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @product_image.version %>
+</p>
