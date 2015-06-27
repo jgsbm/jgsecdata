@@ -20,7 +20,7 @@
     <% @product_images.each do |product_image| %>
       <tr>
         <td><%= product_image.product.product_name %></td>
-        <td><%= image_tag pic_product_image_path(product_image), :height => "32" %></td>
+        <td><%= image_tag pic_product_image_path(product_image), :height => 128 %></td>
         <td><%= product_image.version %></td>
         <td>
           <%= link_to '編集', edit_product_image_path(product_image), :class => 'btn btn-warning' %>
