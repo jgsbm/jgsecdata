@@ -27,6 +27,7 @@ class CreditcardsController < ApplicationController
   # POST /creditcards.json
   def create
     @creditcard = Creditcard.new(creditcard_params)
+    @creditcard.version = 1
 
     respond_to do |format|
       if @creditcard.save
@@ -42,6 +43,7 @@ class CreditcardsController < ApplicationController
   # PATCH/PUT /creditcards/1
   # PATCH/PUT /creditcards/1.json
   def update
+    @creditcard.version += 1
     respond_to do |format|
       if @creditcard.update(creditcard_params)
         format.html { redirect_to @creditcard, notice: 'Creditcard was successfully updated.' }

@@ -31,6 +31,7 @@ class ProductImagesController < ApplicationController
     @product_image = ProductImage.new(product_image_params)
 
     @product_image.pic = params[:product_image][:pic].read
+    @product_image.version = 1
 
     respond_to do |format|
       if @product_image.save
@@ -46,6 +47,7 @@ class ProductImagesController < ApplicationController
   # PATCH/PUT /product_images/1
   # PATCH/PUT /product_images/1.json
   def update
+    @product_image.version += 1
     respond_to do |format|
       if @product_image.update(product_image_params)
         format.html { redirect_to @product_image, notice: 'Product image was successfully updated.' }

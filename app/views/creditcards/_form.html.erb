@@ -20,10 +20,10 @@
       <%= f.label :customer_id %><br>
       <%= f.collection_select :customer_id, Customer.all, :id, :customer_name, :required => true, :class => 'form-control' %>
     </div>
-    <div class="field">
+    <!-- <div class="field">
       <%= f.label :version %><br>
       <%= f.number_field :version, :class => 'form-control' %>
-    </div>
+    </div> -->
     <br>
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary form-control' %>
