@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626092754) do
+ActiveRecord::Schema.define(version: 20150706180728) do
 
   create_table "creditcards", force: true do |t|
-    t.string   "creditno"
-    t.integer  "customer_id"
-    t.integer  "version"
+    t.string   "creditno",    limit: 96,             null: false
+    t.integer  "customer_id",                        null: false
+    t.integer  "version",                default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -24,20 +24,35 @@ ActiveRecord::Schema.define(version: 20150626092754) do
   add_index "creditcards", ["customer_id"], name: "index_creditcards_on_customer_id"
 
   create_table "customers", force: true do |t|
-    t.string   "customer_name"
-    t.string   "address"
-    t.string   "tel"
-    t.string   "hashed_password"
-    t.string   "email"
-    t.integer  "version"
+    t.string   "customer_name",   limit: 30,              null: false
+    t.string   "address",                                 null: false
+    t.string   "tel",             limit: 11,              null: false
+    t.string   "hashed_password", limit: 128,             null: false
+    t.string   "email",           limit: 256,             null: false
+    t.integer  "version",                     default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "product_images", force: true do |t|
+  add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+
+  create_table "histories", force: true do |t|
+    t.integer  "customer_id"
     t.integer  "product_id"
-    t.binary   "pic"
-    t.integer  "version"
+    t.integer  "creditcard_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "histories", ["creditcard_id"], name: "index_histories_on_creditcard_id"
+  add_index "histories", ["customer_id"], name: "index_histories_on_customer_id"
+  add_index "histories", ["product_id"], name: "index_histories_on_product_id"
+
+  create_table "product_images", force: true do |t|
+    t.integer  "product_id",             null: false
+    t.binary   "pic",                    null: false
+    t.integer  "version",    default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,19 +60,21 @@ ActiveRecord::Schema.define(version: 20150626092754) do
   add_index "product_images", ["product_id"], name: "index_product_images_on_product_id"
 
   create_table "products", force: true do |t|
-    t.string   "product_code"
-    t.string   "product_name"
-    t.decimal  "price"
-    t.string   "detail"
-    t.integer  "version"
+    t.string   "product_code", limit: 10,                                      null: false
+    t.string   "product_name", limit: 50
+    t.decimal  "price",                    precision: 6, scale: 2
+    t.string   "detail",       limit: 200
+    t.integer  "version",                                          default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "products", ["product_code"], name: "index_products_on_product_code", unique: true
+
   create_table "stocks", force: true do |t|
-    t.integer  "stock"
-    t.integer  "product_id"
-    t.integer  "version"
+    t.integer  "stock",                  null: false
+    t.integer  "product_id",             null: false
+    t.integer  "version",    default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
