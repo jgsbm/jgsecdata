@@ -1,5 +1,11 @@
 <h1>商品画像</h1>
 
+<% if Rails.env == 'production' %>
+  <p>
+    データソース：<%= ProductImage.data_source %>
+  </p>
+<% end %>
+
 <div align="right">
   <%= link_to '新規商品画像作成', new_product_image_path, :class => 'btn btn-primary' %>
 </div>

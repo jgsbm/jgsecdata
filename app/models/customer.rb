@@ -1,5 +1,9 @@
 class Customer < ActiveRecord::Base
 
+  def self.data_source
+    'Bluemix SQL Database'
+  end
+
   unless ENV['CLOUD_DATABASE_HOST'] == nil
     establish_connection(
       :adapter  => 'ibm_db',
@@ -9,6 +13,7 @@ class Customer < ActiveRecord::Base
       :username => ENV['CLOUD_DATABASE_USER'],
       :password => ENV['CLOUD_DATABASE_PASS']
     )
+    self.data_source = 'Onpremiss database'
   end
 
 end

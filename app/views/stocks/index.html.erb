@@ -1,5 +1,11 @@
 <h1>在庫情報</h1>
 
+<% if Rails.env == 'production' %>
+  <p>
+    データソース：<%= Stock.data_source %>
+  </p>
+<% end %>
+
 <div align="right">
   <%= link_to '新規在庫情報作成', new_stock_path, :class => 'btn btn-primary' %>
 </div>

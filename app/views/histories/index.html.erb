@@ -1,5 +1,11 @@
 <h1>購入履歴</h1>
 
+<% if Rails.env == 'production' %>
+  <p>
+    データソース：<%= History.data_source %>
+  </p>
+<% end %>
+
 <div align="right">
   <%= link_to '新規購入履歴作成', new_history_path, :class => 'btn btn-primary' %>
 </div>

@@ -1,5 +1,11 @@
 <h1>顧客情報</h1>
 
+<% if Rails.env == 'production' %>
+  <p>
+    データソース：<%= Customer.data_source %>
+  </p>
+<% end %>
+
 <div align="right">
   <%= link_to '新規顧客情報作成', new_customer_path, :class => 'btn btn-primary' %>
 </div>
