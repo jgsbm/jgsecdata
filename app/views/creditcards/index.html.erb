@@ -1,6 +1,6 @@
 <h1>クレジットカード情報</h1>
 
-<% unless Rails.env == 'production' %>
+<% if Rails.env == 'production' %>
   <p>
     データソース：<%= Creditcard.data_source %>
   </p>

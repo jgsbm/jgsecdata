@@ -30,7 +30,7 @@
         <td>
           <% begin %>
             <%= stock.product.product_name %>
-          <% else %>
+          <% rescue %>
             [削除済み]
           <% end %>
         </td>
