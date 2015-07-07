@@ -1,0 +1,6 @@
+rails g scaffold customer customer_name:string address:string tel:string hashed_password:string email:string version:integer
+rails g scaffold creditcard creditno:string customer:references version:integer
+rails g scaffold product product_code:string product_name:string price:decimal detail:string version:integer
+rails g scaffold product_image product:references pic:binary version:integer
+rails g scaffold stock stock:integer product:references version:integer
+rails g scaffold history customer:references product:references creditcard:references amount:integer address:string
