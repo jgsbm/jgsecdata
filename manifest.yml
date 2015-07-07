@@ -1,6 +1,5 @@
 applications:
 - disk_quota: 1024M
-  host: jgsecdata
   name: jgsecdata
   path: .
   instances: 1

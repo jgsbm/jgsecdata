@@ -25,7 +25,13 @@
   <tbody>
     <% @product_images.each do |product_image| %>
       <tr>
-        <td><%= product_image.product.product_name %></td>
+        <td>
+          <% begin %>
+            <%= product_image.product.product_name %>
+          <% rescue %>
+            [削除済み]
+          <% end %>
+        </td>
         <td><%= image_tag pic_product_image_path(product_image), :height => 128 %></td>
         <td><%= product_image.version %></td>
         <td>

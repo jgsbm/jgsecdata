@@ -29,9 +29,24 @@
   <tbody>
     <% @histories.each do |history| %>
       <tr>
-        <td><%= history.customer.customer_name %></td>
-        <td><%= history.product.product_name %></td>
-        <td><%= history.creditcard.creditno %></td>
+        <td>
+          <% begin %>
+            <%= history.customer.customer_name %></td>
+          <% rescue %>
+            [削除済み]
+          <% end %>
+        <td>
+          <% begin %>
+            <%= history.product.product_name %></td>
+          <% rescue %>
+            [削除済み]
+          <% end %>
+        <td>
+          <% begin %>
+            <%= history.creditcard.creditno %></td>
+          <% rescue %>
+            [削除済み]
+          <% end %>
         <td><%= history.amount %></td>
         <td><%= history.address %></td>
         <td><%= history.created_at %></td>

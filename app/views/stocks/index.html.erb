@@ -27,12 +27,13 @@
     <% @stocks.each do |stock| %>
       <tr>
         <td><%= stock.stock %></td>
-        <!-- <td><%= stock.product %></td> -->
-        <% unless stock.product == nil %>
-          <td><%= stock.product.product_name %></td>
-        <% else %>
-          <td>DELETED PRODUCT</td>
-        <% end %>
+        <td>
+          <% begin %>
+            <%= stock.product.product_name %>
+          <% else %>
+            [削除済み]
+          <% end %>
+        </td>
         <td><%= stock.created_at %></td>
         <td><%= stock.updated_at %></td>
         <td><%= stock.version %></td>

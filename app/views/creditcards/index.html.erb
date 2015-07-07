@@ -27,12 +27,13 @@
     <% @creditcards.each do |creditcard| %>
       <tr>
         <td><%= creditcard.creditno %></td>
-        <!-- <td><%= creditcard.customer.customer_name %></td> -->
-        <% unless creditcard.customer == nil %>
-          <td><%= creditcard.customer.customer_name %></td>
-        <% else %>
-          <td>削除された顧客</td>
-        <% end %>
+        <td>
+          <% begin %>
+            <%= creditcard.customer.customer_name %>
+          <% rescue %>
+            [削除済み]
+          <% end %>
+        </td>
         <td><%= creditcard.created_at %></td>
         <td><%= creditcard.updated_at %></td>
         <td><%= creditcard.version %></td>
