@@ -11,23 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :customer_id %><br>
-    <%= f.text_field :customer_id %>
-  </div>
-  <div class="field">
-    <%= f.label :product_id %><br>
-    <%= f.text_field :product_id %>
-  </div>
-  <div class="field">
-    <%= f.label :creditcard_id %><br>
-    <%= f.text_field :creditcard_id %>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :customer_id %><br>
+      <%= f.collection_select :customer_id, Customer.all, :id, :customer_name, :required => true, :class => 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :product_id %><br>
+      <%= f.collection_select :product_id, Product.all, :id, :product_name, :required => true, :class => 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :creditcard_id %><br>
+      <!-- <%= f.text_field :creditcard_id, :class => 'form-control' %> -->
+      <%= f.collection_select :creditcard_id, Customer.all, :id, :customer_name, :required => true, :class => 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :amount %><br>
+      <%= f.number_field :amount, :class => 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :address %><br>
+      <%= f.text_field :address, :class => 'form-control' %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary form-control' %>
+    </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $("#history_product_id").on("change", "select", function() {
+    alert("aaa");
+  });
+</script>

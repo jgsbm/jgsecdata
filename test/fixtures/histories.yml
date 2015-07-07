@@ -5,9 +5,11 @@ one:
   product_id: 
   creditcard_id: 
   amount: 1
+  address: MyString
 
 two:
   customer_id: 
   product_id: 
   creditcard_id: 
   amount: 1
+  address: MyString

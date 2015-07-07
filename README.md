@@ -5,9 +5,10 @@
 * Ruby 2.1+
 * Rails 4.1+
 * Bluemix SQL Database service
+* (Optional)Onpremiss DB2
 
 
-# Installing
+## Installing
 
 1. `git clone`
 2. `cd jgs-ec-data`
@@ -20,9 +21,10 @@ When deploying this app first time, run `cf push` with option `-c "bundle exec r
 (First time deploying app after table has been created, run command with option `-c "null"`.)
 
 
-# Using multiple data sources
+## Using multiple data sources
 
-Create following environment variables
+If you want use hybrid database environment, create following environment variables.
+(If these variables are not defined, whole data is saved into SQL Database.)
 
 * CLOUD_DATABASE_HOST
 * CLOUD_DATABASE_PORT

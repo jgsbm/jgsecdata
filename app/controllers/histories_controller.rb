@@ -69,6 +69,6 @@ class HistoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_params
-      params.require(:history).permit(:customer_id, :product_id, :creditcard_id, :amount)
+      params.require(:history).permit(:customer_id, :product_id, :creditcard_id, :amount, :address)
     end
 end

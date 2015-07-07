@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706180728) do
+ActiveRecord::Schema.define(version: 20150707002201) do
 
   create_table "creditcards", force: true do |t|
     t.string   "creditno",    limit: 96,             null: false
@@ -37,10 +37,11 @@ ActiveRecord::Schema.define(version: 20150706180728) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
 
   create_table "histories", force: true do |t|
-    t.integer  "customer_id"
-    t.integer  "product_id"
+    t.integer  "customer_id",   null: false
+    t.integer  "product_id",    null: false
     t.integer  "creditcard_id"
-    t.integer  "amount"
+    t.integer  "amount",        null: false
+    t.string   "address"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
