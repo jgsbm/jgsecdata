@@ -1,7 +1,9 @@
 class History < ActiveRecord::Base
 
+  @@data_source = 'Bluemix SQL Database'
+
   def self.data_source
-    'Bluemix SQL Database'
+    @@data_source
   end
 
   unless ENV['CLOUD_DATABASE_HOST'] == nil
@@ -13,7 +15,7 @@ class History < ActiveRecord::Base
       :username => ENV['CLOUD_DATABASE_USER'],
       :password => ENV['CLOUD_DATABASE_PASS']
     )
-    self.data_source = 'Onpremiss database'
+    @@data_source = 'Onpremiss database'
   end
 
   belongs_to :customer
