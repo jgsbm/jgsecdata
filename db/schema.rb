@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707002201) do
+ActiveRecord::Schema.define(version: 20150711075222) do
 
   create_table "creditcards", force: true do |t|
     t.string   "creditno",    limit: 96,             null: false
@@ -71,6 +71,18 @@ ActiveRecord::Schema.define(version: 20150707002201) do
   end
 
   add_index "products", ["product_code"], name: "index_products_on_product_code", unique: true
+
+  create_table "reviews", force: true do |t|
+    t.integer  "evaluation",   null: false
+    t.string   "comment"
+    t.string   "product_code", null: false
+    t.integer  "customer_id",  null: false
+    t.integer  "version",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["customer_id"], name: "index_reviews_on_customer_id"
 
   create_table "stocks", force: true do |t|
     t.integer  "stock",                  null: false
