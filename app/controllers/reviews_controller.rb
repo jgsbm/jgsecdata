@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    @review = Customer.find(params[:id])
+    @review = Review.find(params[:id])
     @review.version += 1
   end
 
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    @customer.version = 1
+    @review.version = 1
 
     respond_to do |format|
       if @review.save
