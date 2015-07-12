@@ -19,4 +19,5 @@ class Review < ActiveRecord::Base
   end
 
   belongs_to :customer
+  
 end
