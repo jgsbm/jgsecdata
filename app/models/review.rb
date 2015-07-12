@@ -18,6 +18,11 @@ class Review < ActiveRecord::Base
     @@data_source = 'Onpremiss database'
   end
 
+  after_commit do
+    cache = BluemixDatacache::Client.new("#{self.class.name}.LUT")
+    cache.insert(self.product_code, self.attributes.to_json, 'application/json')
+  end
+
   belongs_to :customer
-  
+
 end

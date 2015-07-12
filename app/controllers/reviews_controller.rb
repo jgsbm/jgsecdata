@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  cache = BluemixDatacache::Client.new('REVIEW.LUT')
 
   # GET /reviews
   # GET /reviews.json
@@ -31,7 +30,6 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        cache.insert(@review.product_code, @review.attributes.to_json, 'application/json')
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
