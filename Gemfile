@@ -44,3 +44,5 @@ end
 group :production do
   gem 'ibm_db', '2.5.26'
 end
+
+gem 'bluemix_datacache'
