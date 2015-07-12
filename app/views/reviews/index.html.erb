@@ -30,7 +30,13 @@
         <td><%= review.evaluation %></td>
         <td><%= review.comment %></td>
         <td><%= review.product_code %></td>
-        <td><%= review.customer %></td>
+        <td>
+          <% begin %>
+            <%= review.customer.customer_name %>
+          <% rescue %>
+            [削除済み]
+          <% end %>
+        </td>
         <td><%= review.version %></td>
         <td>
           <%= link_to '編集', edit_review_path(review), :class => 'btn btn-warning' %>

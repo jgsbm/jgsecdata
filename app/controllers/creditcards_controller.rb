@@ -19,8 +19,6 @@ class CreditcardsController < ApplicationController
 
   # GET /creditcards/1/edit
   def edit
-    @creditcard = Creditcard.find(params[:id])
-    @creditcard.version += 1
   end
 
   # POST /creditcards

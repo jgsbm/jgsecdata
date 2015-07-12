@@ -19,8 +19,6 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    @customer = Customer.find(params[:id])
-    @customer.version += 1
   end
 
   # POST /customers

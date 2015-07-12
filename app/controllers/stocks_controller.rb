@@ -19,8 +19,6 @@ class StocksController < ApplicationController
 
   # GET /stocks/1/edit
   def edit
-    @stock = Stock.find(params[:id])
-    @stock.version += 1
   end
 
   # POST /stocks
