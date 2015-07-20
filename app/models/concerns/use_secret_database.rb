@@ -2,16 +2,22 @@ module UseSecretDatabase
   extend ActiveSupport::Concern
 
   included do
-    unless ENV['CLOUD_DATABASE_HOST'] == nil
-      establish_connection(
-        :adapter  => 'ibm_db',
-        :host     => ENV['CLOUD_DATABASE_HOST'],
-        :port     => ENV['CLOUD_DATABASE_PORT'],
-        :database => ENV['CLOUD_DATABASE_NAME'],
-        :username => ENV['CLOUD_DATABASE_USER'],
-        :password => ENV['CLOUD_DATABASE_PASS']
-      )
-      @@data_source = 'Onpremiss database'
+    vcap = Cfenv.services('user-provided')
+    begin
+      unless vcap == nil
+        cred = vcap[0].credentials
+        establish_connection(
+          :adapter  => 'ibm_db',
+          :host     => cred.host,
+          :port     => cred.port,
+          :database => cred.database,
+          :username => cred.username,
+          :password => cred.password
+        )
+        @@data_source = 'Onpremiss database'
+      end
+    rescue
+      p "Onpremiss database is not found"
     end
   end
 end
