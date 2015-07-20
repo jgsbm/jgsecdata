@@ -2,5 +2,7 @@ class Stock < ActiveRecord::Base
   belongs_to :product
   validates :product, uniqueness: true
 
-  include ShowConnectedDatabase
+  def self.data_source
+    'Bluemix SQL Database'
+  end
 end

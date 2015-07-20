@@ -1,5 +1,7 @@
 class ProductImage < ActiveRecord::Base
   belongs_to :product
 
-  include ShowConnectedDatabase
+  def self.data_source
+    'Bluemix SQL Database'
+  end
 end

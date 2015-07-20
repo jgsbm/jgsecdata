@@ -1,6 +1,9 @@
 class Creditcard < ActiveRecord::Base
   belongs_to :customer
 
-  include ShowConnectedDatabase
   include UseSecretDatabase
+
+  def self.data_source
+    'Onpremiss database'
+  end
 end

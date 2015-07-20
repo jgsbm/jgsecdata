@@ -1,8 +1,11 @@
 class Review < ActiveRecord::Base
   belongs_to :customer
 
-  include ShowConnectedDatabase
   include UseSecretDatabase
+
+  def self.data_source
+    'Onpremiss database'
+  end
 
   after_commit do
     cache = BluemixDatacache::Client.new("JGS.NONE")

@@ -1,4 +1,7 @@
 class Customer < ActiveRecord::Base
-  include ShowConnectedDatabase
   include UseSecretDatabase
+
+  def self.data_source
+    'Onpremiss database'
+  end
 end

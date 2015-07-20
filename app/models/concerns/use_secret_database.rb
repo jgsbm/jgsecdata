@@ -14,7 +14,6 @@ module UseSecretDatabase
           :username => cred.username,
           :password => cred.password
         )
-        @@data_source = 'Onpremiss database'
       end
     rescue
       p "Onpremiss database is not found"

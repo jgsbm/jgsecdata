@@ -1,3 +1,5 @@
 class Product < ActiveRecord::Base
-  include ShowConnectedDatabase
+  def self.data_source
+    'Bluemix SQL Database'
+  end
 end
