@@ -5,8 +5,8 @@ class Review < ActiveRecord::Base
   include UseSecretDatabase
 
   after_commit do
-    cache = BluemixDatacache::Client.new("#{self.class.name}.LUT")
-    product_reviews = self.class.where(:product_code => self.product_code).to_json
-    cache.insert(self.product_code, product_reviews, 'application/json')
+    cache = BluemixDatacache::Client.new("JGS.NONE")
+    p product_reviews = self.class.where(:product_code => self.product_code).to_json
+    p cache.insert(self.product_code, product_reviews, 'application/json')
   end
 end

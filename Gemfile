@@ -35,7 +35,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
-gem 'bluemix_datacache'
 
 group :development do
   # Use sqlite3 as the database for Active Record
@@ -46,4 +45,5 @@ group :production do
   gem 'ibm_db', '2.5.26'
 end
 
-gem 'bluemix_datacache'
+gem 'bluemix_datacache', '0.1.0'
+gem 'cfenv', '0.0.2'
